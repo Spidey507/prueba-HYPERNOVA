@@ -2,10 +2,8 @@ import React from 'react';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import TextField from '@material-ui/core/TextField';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Checkbox from '@material-ui/core/Checkbox';
 import { makeStyles } from '@material-ui/core/styles';
-import Header from './Header'
+import Button from '@material-ui/core/Button';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -27,8 +25,6 @@ export default function Form() {
     const classes = useStyles();
 
     return (
-        <div>
-            <Header />
         <div className={classes.root}>
             <div className={classes.formContainer}>
                 <Typography variant="h3" gutterBottom>
@@ -155,9 +151,13 @@ export default function Form() {
                             fullWidth
                         />
                     </Grid>
+                    <Grid item xs={12}>
+                        <Button variant="contained" color="primary">
+                            Submit
+                        </Button>
+                    </Grid>
                 </Grid>
             </div>
-        </div>
         </div>
     );
 }
