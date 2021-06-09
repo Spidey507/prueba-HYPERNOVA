@@ -1,13 +1,14 @@
 import './App.css';
 /*import Login from './components/Login';*/
-import Chart from './components/dashboard'
+/*import Chart from './components/dashboard'*/
+import Form from './components/form'
 
 function App() {
   return (
     
     <div className="App">
       <section className="componentes">
-        <Chart/>
+        <Form/>
 
       </section>
     </div>
