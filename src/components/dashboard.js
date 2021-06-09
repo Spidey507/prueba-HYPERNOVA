@@ -1,5 +1,4 @@
 import React from 'react';
-import Link from '@material-ui/core/Link';
 import { makeStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
@@ -8,7 +7,8 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Container from '@material-ui/core/Container';
 import Header from './Header'
-
+import { Button } from '@material-ui/core';
+import { Link } from 'react-router-dom';
 
 // Generate Order Data
 function createData(id, date, name, shipTo, paymentMethod, amount) {
@@ -75,8 +75,8 @@ export default function Orders() {
                 </Table>
             </Container>
             <div className={classes.seeMore}>
-                <Link color="primary" href="#" onClick={preventDefault}>
-                    See more orders
+                <Link color="primary" to="/form">
+                    <Button color="primary">Crear reporte</Button>
                 </Link>
             </div>
         </React.Fragment>

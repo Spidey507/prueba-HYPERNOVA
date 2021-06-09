@@ -5,6 +5,7 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
+import { Link } from 'react-router-dom';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -33,7 +34,7 @@ export default function Header() {
           <Typography variant="h6" className={classes.title}>
             HyperNova Labs
           </Typography>
-          <Button color="inherit">Logout</Button>
+          <Link to="/"><Button color="inherit">Logout</Button></Link>
         </Toolbar>
       </AppBar>
     </div>
