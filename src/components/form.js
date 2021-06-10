@@ -7,6 +7,39 @@ import Button from '@material-ui/core/Button';
 import Header from './Header'
 import { Link } from 'react-router-dom';
 
+
+class Form extends React.Component{
+    constructor(props){
+        super(props);
+        this.state = {value: ''};
+
+        this.handleChange = this.handleChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
+    }
+
+    handleChange(event){
+        this.setState({value: event.target.value});
+    }
+
+    handleSubmit(event){
+        alert('Reporte creado');
+        event.preventDefault();
+    }
+
+    render(){
+        return(
+            <form>
+                <label>
+                    Nombre:
+                    <input type="text" value={this.state.value} onChange={this.handleChange} />
+                </label>
+                <input type="submit" value="Submit" />
+            </form>
+        );
+    }
+}
+
+/*
 const useStyles = makeStyles((theme) => ({
     root: {
         background: "white",
@@ -23,17 +56,19 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
+
+
 export default function Form() {
     const classes = useStyles();
-
     return (
         <React.Fragment>
             <Header />
             <div className={classes.root}>
-                <div className={classes.formContainer}>
+
+                <div className={classes.formContainer} >
                     <Typography variant="h3" gutterBottom>
                         Crear reporte
-                </Typography>
+                    </Typography>
                     <Grid container spacing={3}>
                         <Grid item xs={12} sm={6}>
                             <TextField
@@ -159,3 +194,5 @@ export default function Form() {
         </React.Fragment>
     );
 }
+*/
+

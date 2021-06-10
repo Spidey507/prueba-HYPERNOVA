@@ -10,19 +10,8 @@ import Header from './Header'
 import { Button } from '@material-ui/core';
 import { Link } from 'react-router-dom';
 import AddCircleIcon from '@material-ui/icons/AddCircle';
+import { DummyData } from '../data'
 
-// Generate Order Data
-function createData(id, date, name, shipTo, paymentMethod, amount) {
-    return { id, date, name, shipTo, paymentMethod, amount };
-}
-
-const rows = [
-    createData(0, '16 Mar, 2019', 'Elvis Presley', 'Tupelo, MS', 'VISA ⠀•••• 3719', 312.44),
-    createData(1, '16 Mar, 2019', 'Paul McCartney', 'London, UK', 'VISA ⠀•••• 2574', 866.99),
-    createData(2, '16 Mar, 2019', 'Tom Scholz', 'Boston, MA', 'MC ⠀•••• 1253', 100.81),
-    createData(3, '16 Mar, 2019', 'Michael Jackson', 'Gary, IN', 'AMEX ⠀•••• 2000', 654.39),
-    createData(4, '15 Mar, 2019', 'Bruce Springsteen', 'Long Branch, NJ', 'VISA ⠀•••• 5919', 212.79),
-];
 
 function preventDefault(event) {
     event.preventDefault();
@@ -57,20 +46,20 @@ export default function dashboard() {
                 <Table size="small" className={classes.tablePosition}>
                     <TableHead>
                         <TableRow>
-                            <TableCell>Fecha</TableCell>
-                            <TableCell>Cuenta</TableCell>
-                            <TableCell>Descripcion</TableCell>
-                            <TableCell>Total</TableCell>
-                            <TableCell align="right">Ver</TableCell>
+                            <TableCell>Nombre</TableCell>
+                            <TableCell>Posicion</TableCell>
+                            <TableCell>Departamento</TableCell>
+                            <TableCell>Supervisor</TableCell>
+                            <TableCell align="right">Ver reporte</TableCell>
                         </TableRow>
                     </TableHead>
                     <TableBody>
-                        {rows.map((row) => (
+                        {DummyData.map((row) => (
                             <TableRow>
-                                <TableCell>{row.date}</TableCell>
-                                <TableCell>{row.name}</TableCell>
-                                <TableCell>{row.shipTo}</TableCell>
-                                <TableCell>{row.paymentMethod}</TableCell>
+                                <TableCell>{row.nombre}</TableCell>
+                                <TableCell>{row.posicion}</TableCell>
+                                <TableCell>{row.departamento}</TableCell>
+                                <TableCell>{row.supervisor}</TableCell>
                                 <TableCell align="right"><Link to={`/show/${row.id}`}><AddCircleIcon /></Link></TableCell>
                             </TableRow>
                         ))}

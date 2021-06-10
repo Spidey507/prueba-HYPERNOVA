@@ -40,7 +40,7 @@ class Login extends React.Component {
           Sign in
             </Typography>
         <Container component="main" maxWidth="xs">
-          <form className={classes.form} noValidate>
+          <form className={classes.form}>
             <TextField
               variant="outlined"
               margin="normal"

@@ -39,15 +39,33 @@ class Show extends React.Component {
                         return (
                             <div key={key}>
 
-                                {data.id +
+                                {
+                                    data.id +
                                     " , " +
                                     data.Nombre +                                    
                                     " ," +
                                     data.Apellido +
                                     ", " +
-
-                                    
-                                    data.timeElapsed}
+                                    data.Posicion +
+                                    " , " +
+                                    data.Departamento +                                    
+                                    " ," +
+                                    data.Supervisor +
+                                    ", " +
+                                    data.FechaDesde +
+                                    " , " +
+                                    data.FechaHasta +                                    
+                                    " ," +
+                                    data.Descripcion +
+                                    ", " +
+                                    data.Concepto +
+                                    " , " +
+                                    data.Cuenta +                                    
+                                    " ," +
+                                    data.Total +
+                                    ", " +
+                                    data.AprobadoPor
+                                }
                             </div>
                         );
                         })}
