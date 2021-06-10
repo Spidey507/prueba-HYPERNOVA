@@ -9,6 +9,7 @@ import Container from '@material-ui/core/Container';
 import Header from './Header'
 import { Button } from '@material-ui/core';
 import { Link } from 'react-router-dom';
+import AddCircleIcon from '@material-ui/icons/AddCircle';
 
 // Generate Order Data
 function createData(id, date, name, shipTo, paymentMethod, amount) {
@@ -29,7 +30,7 @@ function preventDefault(event) {
 
 const useStyles = makeStyles((theme) => ({
     seeMore: {
-        marginTop: theme.spacing(3),
+        marginTop: "1rem",
         textAlign: "center",
     },
 
@@ -45,30 +46,32 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 
-export default function Orders() {
-    const classes = useStyles();
+export default function dashboard() {
+    const classes = useStyles;
+    
     return (
         <React.Fragment>
             <Header />
-            <Container component="main" className={classes.tableWidth} >
+
+            <Container component="main" className={classes.tableWidth} mb={2}>
                 <Table size="small" className={classes.tablePosition}>
                     <TableHead>
                         <TableRow>
-                            <TableCell>Date</TableCell>
-                            <TableCell>Name</TableCell>
-                            <TableCell>Ship To</TableCell>
-                            <TableCell>Payment Method</TableCell>
-                            <TableCell align="right">Sale Amount</TableCell>
+                            <TableCell>Fecha</TableCell>
+                            <TableCell>Cuenta</TableCell>
+                            <TableCell>Descripcion</TableCell>
+                            <TableCell>Total</TableCell>
+                            <TableCell align="right">Ver</TableCell>
                         </TableRow>
                     </TableHead>
                     <TableBody>
                         {rows.map((row) => (
-                            <TableRow key={row.id}>
+                            <TableRow>
                                 <TableCell>{row.date}</TableCell>
                                 <TableCell>{row.name}</TableCell>
                                 <TableCell>{row.shipTo}</TableCell>
                                 <TableCell>{row.paymentMethod}</TableCell>
-                                <TableCell align="right">{row.amount}</TableCell>
+                                <TableCell align="right"><Link to={`/show/${row.id}`}><AddCircleIcon /></Link></TableCell>
                             </TableRow>
                         ))}
                     </TableBody>
@@ -76,7 +79,7 @@ export default function Orders() {
             </Container>
             <div className={classes.seeMore}>
                 <Link color="primary" to="/form">
-                    <Button color="primary">Crear reporte</Button>
+                    <Button variant="contained" color="primary">Crear reporte</Button>
                 </Link>
             </div>
         </React.Fragment>

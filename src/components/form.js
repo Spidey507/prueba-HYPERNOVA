@@ -137,16 +137,7 @@ export default function Form() {
                                 fullWidth
                             />
                         </Grid>
-                        <Grid item xs={12} sm={6}>
-                            <TextField
-                                required
-                                id="Amount"
-                                name="Amount"
-                                label="Amount"
-                                fullWidth
-                            />
-                        </Grid>
-                        <Grid item xs={12} sm={6}>
+                        <Grid item xs={12}>
                             <TextField
                                 required
                                 id="ApprovedBy"
@@ -156,9 +147,11 @@ export default function Form() {
                             />
                         </Grid>
                         <Grid item xs={12}>
-                            <Button variant="contained" color="primary">
-                                Submit
-                            </Button>
+                            <Link to="/dashboard">
+                                <Button variant="contained" color="primary">
+                                    Submit
+                                </Button>
+                            </Link>
                         </Grid>
                     </Grid>
                 </div>

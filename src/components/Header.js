@@ -34,7 +34,7 @@ export default function Header() {
           <Typography variant="h6" className={classes.title}>
             HyperNova Labs
           </Typography>
-          <Link to="/"><Button color="inherit">Logout</Button></Link>
+          <Link to="/"><Button variant="outlined" color="secondary">Logout</Button></Link>
         </Toolbar>
       </AppBar>
     </div>
