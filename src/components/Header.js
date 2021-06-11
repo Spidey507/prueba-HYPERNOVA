@@ -20,6 +20,10 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1,
     display: 'flex',
   },
+  backgroundColor: {
+    background: 'rgb(34,193,195)',
+    background: 'linear-gradient(to bottom, rgba(34,193,195,1) 0%,' + 'rgba(250,218,81,1) 100%)',
+  }
 }));
 
 export default function Header() {
@@ -27,14 +31,14 @@ export default function Header() {
 
   return (
     <div className={classes.root}>
-      <AppBar position="static">
+      <AppBar position="static" className={classes.backgroundColor}>
         <Toolbar>
           <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
           </IconButton>
           <Typography variant="h6" className={classes.title}>
             HyperNova Labs
           </Typography>
-          <Link to="/"><Button variant="outlined" color="secondary">Logout</Button></Link>
+          <Link to="/"><Button variant="outlined" color="default">Logout</Button></Link>
         </Toolbar>
       </AppBar>
     </div>

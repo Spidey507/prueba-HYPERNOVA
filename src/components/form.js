@@ -5,7 +5,7 @@ import TextField from '@material-ui/core/TextField';
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import Header from './Header'
-import { Link } from 'react-router-dom';
+import { Redirect, Link } from 'react-router-dom';
 import axios from 'axios';
 
 const useStyles = makeStyles((theme) => ({
@@ -17,24 +17,28 @@ const useStyles = makeStyles((theme) => ({
     },
     formContainer: {
         display: 'block',
-        width:'70%',
+        width: '70%',
         margin: "2rem",
     },
 }));
-    
+
 class Form extends React.Component {
     constructor(props) {
         super(props);
-        this.state = { };
+        this.state = {};
 
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
+    toDashboard() {
+        return <Redirect to='/dashboard' />;
+    }
+
     handleChange(event) {
         let nam = event.target.name;
         let val = event.target.value;
-        this.setState({[nam]: val});
+        this.setState({ [nam]: val });
     }
 
     handleSubmit(event) {
@@ -62,18 +66,19 @@ class Form extends React.Component {
         }
         console.log(report_params)
         axios.post('http://localhost:3002/api/reports', report_params)
-        .then(response => {
-            if(response.status == 201){
-                alert('Reporte creado')
-            } else {
-                alert('Error en la creacion')
-            }
-        })
-        .catch(error => {
-            console.log(error)
-        })
+            .then(response => {
+                if (response.status == 201) {
+                    params.history.push('/dashboard')
+                    //alert('Reporte creado')
+                } else {
+                    alert('Error en la creacion')
+                }
+            })
+            .catch(error => {
+                console.log(error)
+            })
     }
-    
+
     render() {
         return (
             <React.Fragment>
@@ -96,7 +101,7 @@ class Form extends React.Component {
                                         autoComplete="given-name"
                                     />
                                 </Grid>
-                            
+
                                 <Grid item xs={12} sm={6}>
                                     <TextField
                                         required
@@ -219,10 +224,15 @@ class Form extends React.Component {
                                     />
                                 </Grid>
                                 <Grid item xs={12}>
-                                    <input type="submit" value="Submit"/>
+                                    <input type="submit" value="Submit" />
                                 </Grid>
                             </Grid>
                         </form>
+                        <Grid>
+                            <Link color="primary" to="/dashboard">
+                                <Button variant="contained" color="primary">Crear reporte</Button>
+                            </Link>
+                        </Grid>
                     </div>
                 </div>
             </React.Fragment>

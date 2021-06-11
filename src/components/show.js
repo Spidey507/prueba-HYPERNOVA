@@ -3,6 +3,8 @@ import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import TextField from '@material-ui/core/TextField';
 import { makeStyles } from '@material-ui/core/styles';
+import { sizing } from '@material-ui/system';
+import Container from '@material-ui/core/Container';
 import Button from '@material-ui/core/Button';
 import Header from './Header'
 import { Link } from 'react-router-dom';
@@ -32,41 +34,60 @@ class Show extends React.Component {
     componentDidMount() {
         var id = this.props.id
         fetch(`http://localhost:3002/api/reports/${id}`)
-        .then(res => res.json())
-        .then(json => {
-            console.log(json)
-            this.setState({
-                report: json,
-                employee: json.employee
+            .then(res => res.json())
+            .then(json => {
+                console.log(json)
+                this.setState({
+                    report: json,
+                    employee: json.employee
+                })
             })
-    })
-}
+    }
 
     render() {
-        
+
         return (
 
             <React.Fragment>
                 <Header />
                 <div>
-                    <h1>Reporte</h1>
-                    <div>              
-                        <Grid >
-                            <h3>Concepto: </h3>{ this.state.report.concepto }   
-                            <h3>Desde: </h3>{ this.state.report.fecha_desde }
-                            <h3>Hasta: </h3>{ this.state.report.fecha_hasta }
-                            <h3>Aprobado por: </h3>{ this.state.report.aprobado_por }
-                            <h3>Firma: </h3>{ this.state.report.firma }
-                            <h3>Nombre: </h3>{ this.state.employee.nombre }
-                            <h3>Posicion: </h3>{ this.state.employee.posicion }
-                            <h3>Supervisor: </h3>{ this.state.employee.supervisor }
-                        </Grid>          
 
+                    <h1>Reporte</h1>
+                    <div>
+                        <Grid container spacing={1} className={useStyles.formContainer}>
+                            <Grid item xs={12} sm={6}>
+                                <p>Concepto: {this.state.report.concepto}</p>
+                            </Grid>
+                            <Grid item xs={12} sm={2}>
+                                <p>Desde: {this.state.report.fecha_desde}</p>
+                            </Grid>
+                            <Grid item xs={12} sm={2}>
+                                <p>Hasta: {this.state.report.fecha_hasta}</p>
+                            </Grid>
+                            <Grid item xs={12} sm={6}>
+                                <p>Nombre: {this.state.employee.nombre}</p>
+                            </Grid>
+                            <Grid item xs={12} sm={6}>
+                                <p>Posicion: {this.state.employee.posicion}</p>
+                            </Grid>
+                            <Grid item xs={12} sm={6}>
+                                <p>Aprobado por: {this.state.report.aprobado_por}</p>
+                            </Grid>
+                            <Grid item xs={12} sm={6}>
+                                <p>Firma: {this.state.report.firma}</p>
+                            </Grid>
+                            <Grid item xs={12} sm={6}>
+                                <p>Supervisor: {this.state.employee.supervisor}</p>
+                            </Grid>
+                        </Grid>
+                        <Link color="primary" to="/dashboard">
+                            <Button variant="contained" color="primary">Volver</Button>
+                        </Link>
                     </div>
                 </div>
             </React.Fragment>
 
-        );  
+        );
     }
 
 }
