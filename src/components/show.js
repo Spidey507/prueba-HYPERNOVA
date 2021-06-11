@@ -6,7 +6,6 @@ import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import Header from './Header'
 import { Link } from 'react-router-dom';
-import { DummyData } from '../data'
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -25,6 +24,24 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 class Show extends React.Component {
+    state = {
+        report: {},
+        employee: {}
+    }
+
+    componentDidMount() {
+        var id = this.props.id
+        fetch(`http://localhost:3002/api/reports/${id}`)
+        .then(res => res.json())
+        .then(json => {
+            console.log(json)
+            this.setState({
+                report: json,
+                employee: json.employee
+            })
+    })
+}
+
     render() {
         
         return (
@@ -32,43 +49,18 @@ class Show extends React.Component {
             <React.Fragment>
                 <Header />
                 <div>
-                    <h1>{ /*this.props.id*/ }</h1>
-                    <h1>Hola</h1>
-                    <div>
-                        {DummyData.map((data, key) => {
-                        return (
-                            <div key={key}>
-
-                                {
-                                    data.id +
-                                    " , " +
-                                    data.Nombre +                                    
-                                    " ," +
-                                    data.Apellido +
-                                    ", " +
-                                    data.Posicion +
-                                    " , " +
-                                    data.Departamento +                                    
-                                    " ," +
-                                    data.Supervisor +
-                                    ", " +
-                                    data.FechaDesde +
-                                    " , " +
-                                    data.FechaHasta +                                    
-                                    " ," +
-                                    data.Descripcion +
-                                    ", " +
-                                    data.Concepto +
-                                    " , " +
-                                    data.Cuenta +                                    
-                                    " ," +
-                                    data.Total +
-                                    ", " +
-                                    data.AprobadoPor
-                                }
-                            </div>
-                        );
-                        })}
+                    <h1>Reporte</h1>
+                    <div>              
+                        <Grid >
+                            <h3>Concepto: </h3>{ this.state.report.concepto }   
+                            <h3>Desde: </h3>{ this.state.report.fecha_desde }
+                            <h3>Hasta: </h3>{ this.state.report.fecha_hasta }
+                            <h3>Aprobado por: </h3>{ this.state.report.aprobado_por }
+                            <h3>Firma: </h3>{ this.state.report.firma }
+                            <h3>Nombre: </h3>{ this.state.employee.nombre }
+                            <h3>Posicion: </h3>{ this.state.employee.posicion }
+                            <h3>Supervisor: </h3>{ this.state.employee.supervisor }
+                        </Grid>          
 
                     </div>
                 </div>

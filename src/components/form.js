@@ -39,6 +39,7 @@ class Form extends React.Component{
     }
 }
 
+export default Form
 /*
 const useStyles = makeStyles((theme) => ({
     root: {
